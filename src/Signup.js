@@ -14,7 +14,7 @@ function Signup() {
     setAuthError("");
     setSuccess(false);
     const response = await fetch(
-      "https://to-do-backend-1-16da.onrender.com/register",
+      "https://todobackend-bi77.onrender.com/register",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
