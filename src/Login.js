@@ -53,7 +53,7 @@ export default function Login({ setToken }) {
         <input
           type="text"
           value={username}
-          onChange={(e) => setUsername(e.target)}
+          onChange={(e) => setUsername(e.target.value)}
           className="p-3
           border-orange-300
           rounded-w-full
@@ -65,7 +65,7 @@ export default function Login({ setToken }) {
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target)}
+          onChange={(e) => setPassword(e.target.value)}
           className="p-3
           border-orange-300
           rounded-w-full
