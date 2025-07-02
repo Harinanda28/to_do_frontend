@@ -5,9 +5,7 @@ export default function Login({ setToken }) {
   const [authError, setAuthError] = useState("");
   const [authLoading, setAuthLoading] = useState(false);
   const [username, setUsername] = useState("");
-
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
 
   const login = async (username, password) => {
@@ -15,14 +13,13 @@ export default function Login({ setToken }) {
     setAuthError("");
 
     const response = await fetch(
-      "https://to-do-backend-1-16da.onrender.com/login",
+      "https://todobackend-bi77.onrender.com/login",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: json.stringify({ username, password }),
+        body: JSON.stringify({ username, password }),
       }
     );
-
     const data = await response.json();
     setAuthLoading(false);
     if (data.token) {
@@ -33,6 +30,7 @@ export default function Login({ setToken }) {
       setAuthError(data.message || "Login failed");
     }
   };
+
   return (
     <div className="max-w-md mx-auto mt-16 p-8 bg-orange-50 rounded-lg border border-orange-200">
       <h2 className="text-3xl font-extrabold mb-6 text-center text-orange-600">
@@ -43,7 +41,6 @@ export default function Login({ setToken }) {
           {authError}
         </div>
       )}
-
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -54,37 +51,43 @@ export default function Login({ setToken }) {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="p-3
+          className=" p-3
+          border-2
           border-orange-300
-          rounded-w-full
+          rounded
+          w-full
           mb-4
-          focus:outline-focus
-          focus:ring-2 focus:ring-orange -400"
+          focus:outline-none
+          focus:ring-2
+          focus:ring-orange-400"
           placeholder="Username"
         />
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="p-3
+          className=" p-3
+          border-2
           border-orange-300
-          rounded-w-full
+          rounded
+          w-full
           mb-4
-          focus:outline-focus
-          focus:ring-2 focus:ring-orange -400"
-          placeholder="Password"
+          focus:outline-none
+          focus:ring-2
+          focus:ring-orange-400"
+          placeholder="password"
         />
         <button
           type="submit"
-          className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded w-full transition-colors"
+          className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded w-full transition-color duration-200 "
         >
-          {authLoading ? "Logging in..." : "Login"}
+          {authLoading ? "Loggin in...." : "Login"}
         </button>
       </form>
       <div className="mt-5 text-center text-gray-700">
-        Don't have an account?{""}
+        Don't have an account?
         <Link to="/signup">
-          <span className="text-orange-700 hover:underline font-semibold">
+          <span className="text-orange-500 hover:underline font-semibold">
             Signup
           </span>
         </Link>
